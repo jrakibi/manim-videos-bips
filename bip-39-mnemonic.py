@@ -516,9 +516,9 @@ class BitcoinWalletAnimation(MovingCameraScene):
         # and animate it moving to the top position
         self.play(
             title.animate.to_edge(UP, buff=1),
-            run_time=0.7  # Reduced from 1
+            run_time=1.0  # Increased from 0.7
         )
-        self.wait(0.3)  # Reduced from 0.5
+        self.wait(0.5)  # Increased from 0.3
         
         # 1️⃣ A Bitcoin wallet icon appears in the center
         wallet_rect = RoundedRectangle(
@@ -540,8 +540,8 @@ class BitcoinWalletAnimation(MovingCameraScene):
         wallet = VGroup(wallet_rect, bitcoin_logo)
         
         # Animate the wallet growing from the center
-        self.play(FadeIn(wallet, scale=1.1), run_time=0.7)  # Reduced from 1
-        self.wait(0.3)  # Reduced from 0.5
+        self.play(FadeIn(wallet, scale=1.1), run_time=1.0)  # Increased from 0.7
+        self.wait(0.5)  # Increased from 0.3
         
         # 2️⃣ Inside the wallet, a single black box labeled "Seed" appears
         seed_box = Rectangle(
@@ -560,7 +560,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
         seed = VGroup(seed_box, seed_label)
         
         self.play(FadeIn(seed, scale=1.2))
-        self.wait(0.3)  # Reduced from 0.5
+        self.wait(0.5)  # Increased from 0.3
         
         # 3️⃣ From the seed, arrows start growing, pointing to multiple new keys
         keys = VGroup()
@@ -627,13 +627,13 @@ class BitcoinWalletAnimation(MovingCameraScene):
             )
             
             # Animate arrow growing from seed to key position
-            self.play(GrowArrow(arrow), run_time=0.3)  # Reduced from 0.5
+            self.play(GrowArrow(arrow), run_time=0.5)  # Increased from 0.3
             
             # Animate key and label appearing
             self.play(
                 FadeIn(key, scale=1.2),
                 FadeIn(label),
-                run_time=0.3  # Reduced from 0.5
+                run_time=0.5  # Increased from 0.3
             )
             
             keys.add(key)
@@ -642,9 +642,9 @@ class BitcoinWalletAnimation(MovingCameraScene):
             
             # Brief pause after first key to emphasize the pattern
             if i == 0:
-                self.wait(0.2)  # Reduced from 0.3
+                self.wait(0.3)  # Increased from 0.2
         
-        self.wait(0.7)  # Reduced from 1
+        self.wait(1.0)  # Increased from 0.7
         
         # Create a text box with a background for better visual connection
         text_box = Rectangle(
@@ -666,18 +666,18 @@ class BitcoinWalletAnimation(MovingCameraScene):
         explanation.move_to(text_box.get_center())
         
         # Animate the text box appearing first
-        self.play(FadeIn(text_box), run_time=0.5)  # Reduced from 0.7
+        self.play(FadeIn(text_box), run_time=0.7)  # Increased from 0.5
         
         # Then write the explanation
-        self.play(Write(explanation), run_time=1.0)  # Reduced from 1.5
-        self.wait(0.7)  # Reduced from 1
+        self.play(Write(explanation), run_time=1.5)  # Increased from 1.0
+        self.wait(1.0)  # Increased from 0.7
         
         # 5️⃣ Green checkmark appears next to the wallet
         checkmark = Text("✓", font_size=72, color=GREEN)
         checkmark.next_to(wallet, RIGHT, buff=0.5)
         
         self.play(FadeIn(checkmark, scale=1.5))
-        self.wait(0.7)  # Reduced from 1
+        self.wait(1.0)  # Increased from 0.7
         
         # Group text box and explanation
         text_elements = VGroup(text_box, explanation)
@@ -690,7 +690,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
         
         self.play(
             main_elements.animate.scale(0.9).shift(LEFT * 2.5),
-            run_time=1
+            run_time=1.5  # Increased from 1.0
         )
         
         # Benefits panel slides in from the right
@@ -777,32 +777,32 @@ class BitcoinWalletAnimation(MovingCameraScene):
         
         self.play(
             benefits_group.animate.shift(LEFT * benefits_panel.width),
-            run_time=1
+            run_time=1.5  # Increased from 1.0
         )
         
         # Animate each benefit appearing one by one
-        self.wait(0.3)  # Reduced from 0.5
-        self.play(FadeIn(benefit1), run_time=0.6)  # Reduced from 0.8
-        self.wait(0.2)  # Reduced from 0.3
-        self.play(FadeIn(benefit2), run_time=0.6)  # Reduced from 0.8
-        self.wait(0.2)  # Reduced from 0.3
-        self.play(FadeIn(benefit3), run_time=0.6)  # Reduced from 0.8
-        self.wait(0.1)  # Reduced from 0.2
-        self.play(FadeIn(benefit3_text2), run_time=0.6)  # Reduced from 0.8
+        self.wait(0.5)  # Increased from 0.3
+        self.play(FadeIn(benefit1), run_time=0.8)  # Increased from 0.6
+        self.wait(0.3)  # Increased from 0.2
+        self.play(FadeIn(benefit2), run_time=0.8)  # Increased from 0.6
+        self.wait(0.3)  # Increased from 0.2
+        self.play(FadeIn(benefit3), run_time=0.8)  # Increased from 0.6
+        self.wait(0.2)  # Increased from 0.1
+        self.play(FadeIn(benefit3_text2), run_time=0.8)  # Increased from 0.6
         
-        self.wait(0.7)  # Reduced from 1
+        self.wait(1.0)  # Increased from 0.7
         
         # Benefits panel pulses
         self.play(
             benefits_panel.animate.scale(1.05),
-            run_time=0.5
+            run_time=0.8  # Increased from 0.5
         )
         self.play(
             benefits_panel.animate.scale(1/1.05),
-            run_time=0.5
+            run_time=0.8  # Increased from 0.5
         )
         
-        self.wait(1)
+        self.wait(1.5)  # Increased from 1.0
         
         # Benefits panel slides out while main elements fade out simultaneously
         benefits_full_group = VGroup(benefits_panel, benefits_content)
@@ -811,10 +811,10 @@ class BitcoinWalletAnimation(MovingCameraScene):
         self.play(
             benefits_full_group.animate.shift(RIGHT * benefits_panel.width),
             FadeOut(main_elements),
-            run_time=1.0
+            run_time=1.5  # Increased from 1.0
         )
         
-        self.wait(0.3)  # Reduced from 0.5
+        self.wait(0.5)  # Increased from 0.3
         
         # 7️⃣ The text "How are mnemonic words created?" fades in
         next_scene_text = Text(
@@ -824,13 +824,13 @@ class BitcoinWalletAnimation(MovingCameraScene):
         )
         next_scene_text.move_to(ORIGIN)  # Changed from to_edge(DOWN) to center
         
-        self.play(FadeIn(next_scene_text), run_time=1.0)  # Reduced from 1.5
-        self.wait(0.7)  # Reduced from 1
+        self.play(FadeIn(next_scene_text), run_time=1.5)  # Increased from 1.0
+        self.wait(1.0)  # Increased from 0.7
         
         # Fade out for transition to next scene
         self.play(
             FadeOut(next_scene_text),
-            run_time=1
+            run_time=1.5  # Increased from 1.0
         )
 
     def create_deterministic_wallet_icon(self):
@@ -936,15 +936,15 @@ class BitcoinWalletAnimation(MovingCameraScene):
     
     def generate_entropy_animation(self):
         # Step 1 title
-        title = Text("Step 1: Generate Entropy (130 bits)", font_size=48, color=YELLOW)
+        title = Text("Step 1: Generate Entropy (128 bits)", font_size=48, color=YELLOW)
         title.to_edge(UP, buff=0.5)
         
         self.play(Write(title), run_time=0.6)  # Faster title write
         self.wait(0.2)  # Reduced wait time
         
-        # Create a container for the binary digits - made larger
+        # Create a container for the binary digits - EVEN SMALLER
         container = Rectangle(
-            width=13, height=7,
+            width=9, height=5,  # Further reduced from 10x5.5 to 9x5
             stroke_color=WHITE,
             stroke_width=2,
             fill_color=BLACK,
@@ -955,9 +955,9 @@ class BitcoinWalletAnimation(MovingCameraScene):
         # Create initial binary display with all zeros
         binary_rows = []
         for i in range(5):  # 5 rows for 130 bits
-            row = Text("0" * 26, font_size=28)  # Increased font size
+            row = Text("0" * 26, font_size=24)  # Reduced font size from 28 to 24
             if i == 0:
-                row.move_to(container.get_center() + UP * 1.4)
+                row.move_to(container.get_center() + UP * 1.2)  # Reduced offset from 1.4 to 1.2
             else:
                 row.next_to(binary_rows[i-1], DOWN, buff=0.2)
             binary_rows.append(row)
@@ -965,8 +965,8 @@ class BitcoinWalletAnimation(MovingCameraScene):
         binary_group = VGroup(*binary_rows)
         binary_group.move_to(container.get_center())
         
-        # Add "entropy = " label with larger font
-        entropy_label = Text("entropy = ", font_size=28, color=BLUE_B)
+        # Add "entropy = " label with adjusted font
+        entropy_label = Text("entropy = ", font_size=24, color=BLUE_B)  # Reduced from 28 to 24
         entropy_label.next_to(binary_group, LEFT, buff=0.3)
         
         # Make sure it's still inside the container
@@ -988,17 +988,17 @@ class BitcoinWalletAnimation(MovingCameraScene):
         )
         self.wait(0.2)  # Reduced wait time
         
-        # Improved entropy generation animation - faster transitions
+        # IMPROVED ENTROPY GENERATION ANIMATION - Better synchronization
         for transition in range(3):  # Reduced to 3 transitions for speed
             # Generate new random binary for all rows
             new_rows = []
             for i in range(5):
                 # Create a new row with random bits
                 new_text = ''.join(random.choice(["0", "1"]) for _ in range(26))
-                new_row = Text(new_text, font_size=28)
+                new_row = Text(new_text, font_size=24)  # Reduced font size from 28 to 24
                 
                 if i == 0:
-                    new_row.move_to(container.get_center() + UP * 1.4)
+                    new_row.move_to(container.get_center() + UP * 1.2)  # Reduced offset from 1.4 to 1.2
                 else:
                     new_row.next_to(new_rows[i-1], DOWN, buff=0.2)
                 new_rows.append(new_row)
@@ -1006,19 +1006,24 @@ class BitcoinWalletAnimation(MovingCameraScene):
             new_group = VGroup(*new_rows)
             new_group.move_to(container.get_center())
             
-            # More dynamic transition between states - faster
+            # IMPROVED SYNCHRONIZED ANIMATION between flashing and entropy change
             if transition == 0:
+                # First transition - simple transform
                 self.play(
                     TransformFromCopy(binary_group, new_group),
                     FadeOut(binary_group),
-                    run_time=0.5  # Faster animation
+                    run_time=0.5
                 )
             else:
-                # Add some visual effects to show randomness - faster
+                # Create a flash effect that better synchronizes with the entropy change
                 flash = container.copy().set_fill(BLUE_A, opacity=0.3)
+                
+                # Combined animation: flash and transform at the same time
                 self.play(
-                    FadeIn(flash, rate_func=there_and_back, run_time=0.2),  # Faster flash
-                    ReplacementTransform(binary_group, new_group, run_time=0.5)  # Faster transform
+                    AnimationGroup(
+                        FadeIn(flash, rate_func=there_and_back, run_time=0.5),
+                        ReplacementTransform(binary_group, new_group, run_time=0.5)
+                    )
                 )
             
             # Update binary_group to the new state
@@ -1026,7 +1031,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             
             self.wait(0.1)  # Reduced wait time
         
-        # Generate the final 130-bit entropy (trimming to exactly 130 bits)
+        # Generate the final 128-bit entropy (trimming to exactly 130 bits)
         final_entropy = ""
         for _ in range(130):
             final_entropy += random.choice(["0", "1"])
@@ -1035,36 +1040,38 @@ class BitcoinWalletAnimation(MovingCameraScene):
         final_rows = []
         for i in range(4):  # First 4 rows
             row_text = final_entropy[i*26:(i+1)*26]  # 26 bits per row
-            row = Text(row_text, font_size=28, color=GREEN_B)
+            row = Text(row_text, font_size=24, color=GREEN_B)  # Reduced font size from 28 to 24
             if i == 0:
-                row.move_to(container.get_center() + UP * 1.4)
+                row.move_to(container.get_center() + UP * 1.2)  # Reduced offset from 1.4 to 1.2
             else:
                 row.next_to(final_rows[i-1], DOWN, buff=0.2)
             final_rows.append(row)
         
         # Last row with remaining 24 bits
         last_row_text = final_entropy[104:130]  # Last 24 bits
-        last_row = Text(last_row_text, font_size=28, color=GREEN_B)
+        last_row = Text(last_row_text, font_size=24, color=GREEN_B)  # Reduced font size from 28 to 24
         last_row.next_to(final_rows[3], DOWN, buff=0.2)
         final_rows.append(last_row)
         
         final_group = VGroup(*final_rows)
         final_group.move_to(container.get_center())
         
-        # Highlight the final entropy with a special effect - faster
+        # Final entropy transition with improved synchronization
         highlight = container.copy().set_stroke(color=GREEN, width=6)
         
-        # Replace the random bits with the final entropy - faster
+        # Combined animation: flash and final entropy appear together
         self.play(
-            FadeOut(binary_group),
-            FadeIn(final_group),
-            FadeIn(highlight, rate_func=there_and_back),
+            AnimationGroup(
+                FadeOut(binary_group),
+                FadeIn(final_group),
+                FadeIn(highlight, rate_func=there_and_back)
+            ),
             run_time=0.7  # Faster animation
         )
         
-        # Add a label for the final entropy - faster
-        final_label = Text("Final Entropy Generated", font_size=36, color=GREEN)
-        final_label.next_to(container, DOWN, buff=0.5)
+        # Add a label for the final entropy - smaller and positioned below but closer
+        final_label = Text("Final Entropy Generated", font_size=28, color=GREEN)  # Reduced from 36 to 28
+        final_label.next_to(container, DOWN, buff=0.3)  # Reduced buffer from 0.5 to 0.3 to move it closer
         
         self.play(
             Write(final_label),
@@ -1076,12 +1083,12 @@ class BitcoinWalletAnimation(MovingCameraScene):
         # Store the final entropy for later use
         self.entropy = final_entropy[:130]  # Ensure exactly 130 bits
         self.entropy_display = VGroup(container, final_group, final_label, entropy_label)
+        self.step1_title = title  # Store title separately for transition
         
-        # Fade out Step 1 elements
+        # Keep the entropy displayed but fade out the label
         self.play(
-            FadeOut(title),
-            FadeOut(self.entropy_display),
-            run_time=0.7
+            FadeOut(final_label),
+            run_time=0.5
         )
 
     def hash_entropy_animation(self):
@@ -1089,8 +1096,15 @@ class BitcoinWalletAnimation(MovingCameraScene):
         title = Text("Step 2: Hash the Entropy", font_size=48, color=YELLOW)
         title.to_edge(UP, buff=0.5)
         
-        self.play(Write(title), run_time=0.6)
+        # Smooth transition from Step 1 to Step 2 title
+        self.play(
+            ReplacementTransform(self.step1_title, title),
+            run_time=0.6
+        )
         self.wait(0.2)
+        
+        # Get entropy display components
+        container, final_group, _, entropy_label = self.entropy_display
         
         # Create a simplified version of the entropy for display
         entropy_sample = self.entropy[:3] + "..." + self.entropy[-3:]
@@ -1113,19 +1127,33 @@ class BitcoinWalletAnimation(MovingCameraScene):
         left_side = VGroup(hash_function, entropy_text, closing_paren, equals)
         left_side.move_to(ORIGIN).shift(LEFT * 2.5).shift(UP * 0.5)  # Moved left and down
         
-        # Create a brace to indicate "Message/file"
-        message_brace = Brace(entropy_text, DOWN, color=BLUE_B)
-        message_label = Text("Entropy", font_size=32, color=BLUE_B)
-        message_label.next_to(message_brace, DOWN, buff=0.2)
+        # Create a moving entropy animation that flows from Step 1 to Step 2
+        moving_entropy = final_group.copy()
         
-        # Animate the appearance of the hash function
+        # Create a visual effect of entropy flowing into the hash function
         self.play(
+            # Move the entropy down and shrink it toward the entropy_text position
+            moving_entropy.animate.scale(0.5).move_to(entropy_text.get_center()),
+            # Fade out the original entropy display
+            FadeOut(container),
+            FadeOut(final_group),
+            FadeOut(entropy_label),
+            run_time=0.8
+        )
+        
+        # Now show the hash function appearing as the entropy flows in
+        self.play(
+            ReplacementTransform(moving_entropy, entropy_text),
             Write(hash_function),
-            Write(entropy_text),
             Write(closing_paren),
             Write(equals),
             run_time=0.8
         )
+        
+        # Create a brace to indicate "Message/file"
+        message_brace = Brace(entropy_text, DOWN, color=BLUE_B)
+        message_label = Text("Entropy", font_size=32, color=BLUE_B)
+        message_label.next_to(message_brace, DOWN, buff=0.2)
         
         self.play(
             GrowFromCenter(message_brace),
@@ -1388,7 +1416,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
         self.play(
             FadeOut(self.combined_display[1:]),  # Keep the bits, fade out labels
             FadeOut(self.step3_title),  # Remove Step 3 title
-            run_time=0.7
+            run_time=1.2  # Increased from 0.7
         )
         
         # PART 1: Split into segments animation
@@ -1396,8 +1424,8 @@ class BitcoinWalletAnimation(MovingCameraScene):
         title = Text("Step 4: Split into 11-bit Segments", font_size=36, color=YELLOW)
         title.to_edge(UP, buff=0.5)
         
-        self.play(FadeIn(title), run_time=0.7)
-        self.wait(0.3)
+        self.play(FadeIn(title), run_time=1.2)  # Increased from 0.7
+        self.wait(0.5)  # Increased from 0.3
         
         # Get the combined bits from Step 3
         combined_bits_content = self.combined_display[0]
@@ -1438,7 +1466,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
         self.play(
             ReplacementTransform(combined_bits_content, combined_bits_display),
             FadeIn(combined_label), 
-            run_time=0.8
+            run_time=1.5  # Increased from 0.8
         )
         
         # Add row containers to visually show equal bit count
@@ -1454,7 +1482,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             )
             row_backgrounds.add(background)
             
-        self.play(FadeIn(row_backgrounds), run_time=0.3)
+        self.play(FadeIn(row_backgrounds), run_time=0.6)  # Increased from 0.3
         
         # Split the combined bits into 11-bit segments
         segments = []
@@ -1469,7 +1497,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
         segment_label = Text("11-bit Segments", font_size=22, color=BLUE_C)
         segment_label.next_to(start_pos, UP, buff=0.4)
         
-        self.play(Write(segment_label), run_time=0.5)
+        self.play(Write(segment_label), run_time=1.0)  # Increased from 0.5
         
         # Create empty segment boxes first
         segment_boxes = VGroup()
@@ -1498,7 +1526,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             segment_boxes.add(box)
         
         # Animate all empty boxes appearing at once
-        self.play(FadeIn(segment_boxes), run_time=0.7)
+        self.play(FadeIn(segment_boxes), run_time=1.2)  # Increased from 0.7
         
         # Group all the combined bits elements for later reference
         combined_bits_group = VGroup(combined_label, combined_bits_display, row_backgrounds)
@@ -1540,7 +1568,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             # Highlight the bits in original sequence with yellow color
             self.play(
                 highlight_group.animate.set_color(YELLOW),
-                run_time=0.4
+                run_time=0.8  # Increased from 0.4
             )
             
             # Create a temporary visual copy of the segment for animation
@@ -1550,7 +1578,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             # Animate extraction of the segment
             self.play(
                 FadeIn(segment_visual),
-                run_time=0.3
+                run_time=0.6  # Increased from 0.3
             )
             
             # Move the segment to its target box
@@ -1560,7 +1588,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             self.play(
                 ReplacementTransform(segment_visual, target_text),
                 segment_boxes[i].animate.set_fill(opacity=0.5),
-                run_time=0.5
+                run_time=1.0  # Increased from 0.5
             )
             
             segment_texts.add(target_text)
@@ -1568,7 +1596,7 @@ class BitcoinWalletAnimation(MovingCameraScene):
             # Reset the original bits color
             self.play(
                 highlight_group.animate.set_color(BLUE_B),
-                run_time=0.2
+                run_time=0.4  # Increased from 0.2
             )
         
         # REMAINING SEGMENTS: Extract with smoother animations but more efficiently
